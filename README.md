@@ -1,7 +1,7 @@
 # The Echo project
 Taking notes is now history
 
-##How to run the project
+## How to run the project
 1- Make sure you have Ollama by installed by downloading the exe file from https://ollama.com/ also you should have python and pip installed.
 
 2- Install the model you want by running the following command on terminal: ollama run (model number)

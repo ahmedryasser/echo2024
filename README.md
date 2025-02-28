@@ -1,1 +1,15 @@
-# echo2024
+# The Echo project
+Taking notes is now history
+
+##How to run the project
+1- Make sure you have Ollama by installed by downloading the exe file from https://ollama.com/ also you should have python and pip installed.
+
+2- Install the model you want by running the following command on terminal: ollama run (model number)
+
+3- Now head to the project files and run the following command to install the dependencies: pip install -r requirements.txt
+
+4- Next create a .env file in the root directory with the following variable: .env=(model number)
+
+5- Then run: python app.py
+
+You can find the model numbers here: https://ollama.com/search

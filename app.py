@@ -8,6 +8,7 @@ import os
 from werkzeug.utils import secure_filename
 import to_text
 from prompts import OUTPUT_PROMPTS
+import dotenv
 
 # Setup basic logging
 logging.basicConfig(level=logging.DEBUG)
@@ -18,6 +19,8 @@ CORS(app)
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 1024  # 1GB max file size
 app.config['UPLOAD_FOLDER'] = 'uploads'
 ALLOWED_EXTENSIONS = {'pdf', 'mp3', 'mp4'}
+dotenv.load_dotenv()
+model_val = os.getenv('model')
 
 # Ensure upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -44,7 +47,7 @@ def extract_text_from_pdf(file_path):
 def initialize_llama():
     try:
         # Initialize the LLaMA model directly
-        llama_model = OllamaLLM(model="llama3.1") # Change your model version here
+        llama_model = OllamaLLM(model=model_val)
         return llama_model
     except Exception as e:
         logging.error(f"Failed to initialize LLM: {e}")

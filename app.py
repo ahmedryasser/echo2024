@@ -44,7 +44,7 @@ def extract_text_from_pdf(file_path):
 def initialize_llama():
     try:
         # Initialize the LLaMA model directly
-        llama_model = OllamaLLM(model="llama3.2:1b") # Change your model version here
+        llama_model = OllamaLLM(model="llama3.1") # Change your model version here
         return llama_model
     except Exception as e:
         logging.error(f"Failed to initialize LLM: {e}")
@@ -78,10 +78,11 @@ def extract_qa_pairs(text):
     
     # Combine questions and answers into pairs
     for i in range(len(questions)):
-        qa_pairs.append({
-            'question': questions[i].strip(),
-            'answer': answers[i].strip()
-        })
+        if i < len(answers):
+            qa_pairs.append({
+                'question': questions[i].strip(),
+                'answer': answers[i].strip()
+            })
 
     # Desired output format
     ret = []

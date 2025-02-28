@@ -1,34 +1,52 @@
-# Define prompts for different output types
+# Define prompts for different output types with improved clarity and consistency
 OUTPUT_PROMPTS = {
-    'qa': "Create 10 questions based on the key concepts discussed in the lecture or meeting. Provide correct answers including brief explanations for each question. Return in the following bullet pointsformat: Q<n>: the question\n A<n>: the answer\n (<n> is the question number)\n Following content: ",
-    'transcripts': "Generate a detailed, well-structured transcript from the following content: ",
-    'notes': 
-    """
-    Based on the provided lecture or meeting transcript, summarize the theme and ten key points, create a concise set of notes for easy review.\n
-    Each note Output format are as follows:
-    Key word1: explanation and summary,
-    Key word2: explanation and summary,
-    ……,
-    Key word10: explanation and summary
-
-    """,
-    'summary': "Generate a comprehensive summary of the following content:",
-    'learing_objectives': """ 
-    From the provided lecture transcript, identify the primary 10 learning objectives. Adhere strictly to the format given where the response should contain no more than 1000 characters in total. List each objective as follows:
-        Objective 1,
-        Objective 2,
-        …,
-        Objective 10
-        Do not provide explanations, interpretations, or any output beyond this format.
-    """,
-    'Action_items':"""
-    Generate 8 action items based on the discussion in the meeting.If possible, list them in order by considering both importance and urgency. Include the task, responsible person, and deadlines if mentioned as the following format:
-        1. Task:,
-        Responsible Person:,
-        Deadline
-        2. Task:,
-        Responsible Person:,
-        Deadline
-        etc.
-    """
+    'qa': (
+        "Create 10 questions based on the key concepts discussed in the lecture or meeting. "
+        "Provide correct answers with brief explanations for each question. "
+        "Return the output as plain text using the following format without any markdown or special fonts:\n"
+        "Q<n>: <question text>\n"
+        "A<n>: <answer text>\n"
+        "(<n> represents the question number, starting from 1)\n"
+        "Following content: "
+    ),
+    'transcripts': (
+        "Generate a detailed and well-structured transcript from the following content. "
+        "Ensure that speaker names and any transitions are clearly indicated.\n"
+        "Transcript content: "
+    ),
+    'notes': (
+        "Based on the provided lecture or meeting transcript, summarize the overall theme and extract ten key points. "
+        "Create a set of concise notes for easy review. Each note should follow this format:\n"
+        "Keyword 1: Explanation and summary\n"
+        "Keyword 2: Explanation and summary\n"
+        "...\n"
+        "Keyword 10: Explanation and summary\n"
+        "Transcript: "
+    ),
+    'summary': (
+        "Generate a comprehensive summary of the following content. "
+        "Ensure that the summary is clear, well-organized, and covers all the main points.\n"
+        "Content: "
+    ),
+    'learning_objectives': (
+        "From the provided lecture transcript, identify the top 10 primary learning objectives. "
+        "Adhere strictly to the following format, keeping the total output within 1000 characters. "
+        "List each objective as follows:\n"
+        "Objective 1,\n"
+        "Objective 2,\n"
+        "...\n"
+        "Objective 10\n"
+        "Do not include any additional explanations or commentary."
+    ),
+    'action_items': (
+        "Generate 8 action items based on the discussion in the meeting. If possible, list them in order of both importance and urgency. "
+        "For each item, include the following details formatted exactly as shown:\n"
+        "1. Task: <task description>\n"
+        "   Responsible Person: <name>\n"
+        "   Deadline: <date/time>\n"
+        "2. Task: <task description>\n"
+        "   Responsible Person: <name>\n"
+        "   Deadline: <date/time>\n"
+        "...\n"
+    ),
 }

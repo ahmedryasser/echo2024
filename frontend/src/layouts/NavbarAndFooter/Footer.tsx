@@ -1,9 +1,24 @@
+import * as React from 'react';
+import { Box, Container, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+
 export const Footer = () => {
+    const theme = useTheme();
+
     return (
-        <footer className='d-flex navbar bg-dark'>
-            <div className= "container-fluid justify-content-center">
-                <p className="text-light fs-5">© Echo Project Team</p>
-            </div>
-        </footer>
+        <Box
+            component="footer"
+            sx={{
+                backgroundColor: theme.palette.grey[900],
+                py: 2,
+                mt: 'auto',
+            }}
+        >
+            <Container maxWidth="lg" sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Typography variant="body1" color="common.white">
+                    © Echo Project Team
+                </Typography>
+            </Container>
+        </Box>
     );
 }

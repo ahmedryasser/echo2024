@@ -1,15 +1,41 @@
-import ReactMarkdown from 'react-markdown'
+import * as React from 'react';
+import ReactMarkdown from 'react-markdown';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardContent from '@mui/material/CardContent';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
 
-export const OutputSection = (props: any) => {
-    return (
-        <div className="card bg-dark border-white mt-3 mb-3">
-            <div className="p-3 pb-2">
-                <h3 className=" text-light fw-bold border-0">{props.title}</h3>
-            </div>
-            <hr className="border-light m-0"></hr>
-            <div className="card-body">
-                <p className="card-text text-light"><ReactMarkdown children={props.text} /></p>
-            </div>
-        </div>
-    )
+interface OutputSectionProps {
+  title: string;
+  text: string;
 }
+
+export const OutputSection: React.FC<OutputSectionProps> = ({ title, text }) => {
+  return (
+    <Card
+      sx={{
+        mb: 2,
+        bgcolor: 'background.paper',
+        color: 'text.primary',
+        border: 1,
+        borderColor: 'divider',
+        boxShadow: 3,
+      }}
+    >
+      <CardHeader 
+        title={
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            {title}
+          </Typography>
+        } 
+      />
+      <Divider />
+      <CardContent>
+        <Typography variant="body1">
+          <ReactMarkdown>{text}</ReactMarkdown>
+        </Typography>
+      </CardContent>
+    </Card>
+  );
+};

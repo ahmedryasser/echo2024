@@ -1,17 +1,57 @@
-import { useCollapse } from 'react-collapsed'
+import * as React from 'react';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useTheme } from '@mui/material/styles';
 
-export const QACollapse = (props: any) => {
-    const { getCollapseProps, getToggleProps } = useCollapse()
+interface QACollapseProps {
+    index: number
+    title: string
+    text: string
+    expanded?: boolean
+    onChange?: (event: React.SyntheticEvent, expanded: boolean) => void
+}
+
+export const QACollapse: React.FC<QACollapseProps> = ({ index, title, text, expanded, onChange }) => {
+    const theme = useTheme();
 
     return (
-        <div className="card bg-dark border-white mt-3 mb-3">
-            <div className="p-3 pb-2" {...getToggleProps()}>
-                <h3 className="fs-6 text-light fw-bold border-0">Q{props.index + 1}. {props.title}</h3>
-            </div>
-            <hr className="border-light m-0"></hr>
-                <div className="card-body" {...getCollapseProps()}>
-                    <p className="fs-6 card-text text-light">A{props.index}. {props.text} </p>
-            </div>
-        </div>
-    )
-}
+        <Accordion
+            disableGutters
+            expanded={expanded}
+            onChange={onChange}
+            sx={{
+                backgroundColor: theme.palette.background.paper,
+                color: theme.palette.text.primary,
+                mb: 1,
+                border: `1px solid ${theme.palette.divider}`,
+                borderRadius: 1,
+                boxShadow: 'none',
+            }}
+        >
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={`panel${index}-content`}
+                id={`panel${index}-header`}
+                sx={{
+                    cursor: 'pointer',
+                    transition: 'background-color 0.3s ease',
+                    '&:hover': {
+                        backgroundColor: theme.palette.action.hover,
+                    },
+                }}
+            >
+                <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    Q{index + 1}. {title}
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ padding: 2 }}>
+                <Typography variant="body2">
+                    A{index + 1}. {text}
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
+    );
+};

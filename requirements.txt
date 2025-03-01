@@ -54,3 +54,4 @@ Werkzeug
 yarl
 ffmpeg-python
 SpeechRecognition
+openai

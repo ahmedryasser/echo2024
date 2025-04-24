@@ -8,7 +8,7 @@ Taking notes is now history
 
 3- Now head to the project files and run the following command to install the dependencies: pip install -r requirements.txt
 
-4- Next create a .env file in the root directory with the following variable: .env=(model number)
+4- Next create a .env file in the root directory with the following variable: model=(model number)
 
 5- Then run: python app.py
 

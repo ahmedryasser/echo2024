@@ -1,5 +1,5 @@
 # The Echo project
-Taking notes is now history
+Taking notes is now a thing of the past
 
 ## How to run the project backend
 1- Make sure you have Ollama by installed by downloading the exe file from https://ollama.com/ also you should have python and pip installed.
